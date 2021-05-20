@@ -5,9 +5,9 @@ import MenuListItem from '../menu-list-item';
 import './menu-list.sass';
 
 // eslint-disable-next-line react/prop-types
-const MenuList = ({ todos }) => {
+const MenuList = ({ menu }) => {
 
-  const elements = todos.map((item) => {
+  const elements = menu.map((item) => {
     const { id, ...itemProps } = item;
 
     return (
