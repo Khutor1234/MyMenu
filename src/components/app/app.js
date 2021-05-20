@@ -7,9 +7,9 @@ import './app.sass';
 const App = () => {
 
   const todoData = [
-    { label: 'Drink Coffee', recepie:'dsfdfsdf', id: 1 },
-    { label: 'Make Awesome App', recepie:'dsfdfsdf', id: 2 },
-    { label: 'Have a lunch', recepie:'dsfdfsdf', id: 3 }
+    { label: 'Drink Coffee', recepie:'dsfdfsdf', ingridients: {efdfe: 10, dsdfd:3, cddc:2}, id: 1 },
+    { label: 'Make Awesome App', recepie:'dsfdfsdf',ingridients: {efdfe: 10, dsdfd:3, cddc:2}, id: 2 },
+    { label: 'Have a lunch', recepie:'dsfdfsdf',ingridients: {efdfe: 10, dsdfd:3, cddc:2}, id: 3 }
   ];
 
   return (

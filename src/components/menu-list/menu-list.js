@@ -18,7 +18,7 @@ const MenuList = ({ todos }) => {
   });
 
   return (
-    <ul>
+    <ul className = 'menu-list'>
       { elements }
     </ul>
   );
