@@ -6,7 +6,7 @@ import MenuIngridients from '../menu-ingridients';
 import './menu-list-item.sass';
 
 // eslint-disable-next-line react/prop-types
-const MenuListItem = ({ label,recepie }) => {
+const MenuListItem = ({ label,recepie, ingridients }) => {
 
 	return (
 		<div className = 'menu-list-item'>
@@ -17,7 +17,7 @@ const MenuListItem = ({ label,recepie }) => {
 					<p className = "card-text">{recepie}</p>
 				</div>
 
-				<MenuIngridients/>
+				<MenuIngridients ingrid = {ingridients} />
 			</div>
 
 			<MenuForm />
