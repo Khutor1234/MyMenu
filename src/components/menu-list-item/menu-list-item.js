@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './menu-list-item.css';
+import './menu-list-item.sass';
 
 // eslint-disable-next-line react/prop-types
 const MenuListItem = ({ label,recepie }) => {

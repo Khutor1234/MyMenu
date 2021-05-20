@@ -2,7 +2,7 @@ import React from 'react';
 
 import MenuList from '../menu-list';
 
-import './app.css';
+import './app.sass';
 
 const App = () => {
 
@@ -13,8 +13,8 @@ const App = () => {
   ];
 
   return (
-    <div>
-      <MenuList todos={todoData} />
+    <div className = 'menu-app'>
+      <MenuList  todos={todoData} />
     </div>
   );
 };

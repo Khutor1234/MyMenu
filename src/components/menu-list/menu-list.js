@@ -2,7 +2,7 @@
 import React from 'react';
 
 import MenuListItem from '../menu-list-item';
-import './menu-list.css';
+import './menu-list.sass';
 
 // eslint-disable-next-line react/prop-types
 const MenuList = ({ todos }) => {
