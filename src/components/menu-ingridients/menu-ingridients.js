@@ -12,7 +12,7 @@ const MenuIngridients = ({ingrid}) => {
 
         return (
           // eslint-disable-next-line react/jsx-key
-          <li id = {Math.floor(Math.random() * 1000)} >
+          <li >
             <div>{item[0]}</div> 
             <span>{item[1]} г</span>
           </li>
