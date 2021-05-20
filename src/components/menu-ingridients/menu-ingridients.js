@@ -5,7 +5,6 @@ import './menu-ingridients.sass';
 // eslint-disable-next-line react/prop-types
 const MenuIngridients = ({ingrid}) => {
 
-
     const elem = Object.entries(ingrid);
 
     // eslint-disable-next-line react/prop-types
@@ -13,7 +12,7 @@ const MenuIngridients = ({ingrid}) => {
 
         return (
           // eslint-disable-next-line react/jsx-key
-          <li>
+          <li id = {Math.floor(Math.random() * 1000)} >
             <div>{item[0]}</div> 
             <span>{item[1]} г</span>
           </li>

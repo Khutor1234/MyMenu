@@ -16,6 +16,7 @@ export default class MenuForm extends Component {
             );
         });
 
+
         return(
             <div className = "input-group menu-form">
                 {<select className = "form-select">
@@ -25,7 +26,7 @@ export default class MenuForm extends Component {
                 <input type="text" className = "form-control"  placeholder='Порции'/>
                 <button className = "btn btn-outline-secondary" 
                     type="button"
-                    onClick = {() => {console.log('hello')}} 
+                    onClick = {() => this.props.onAdd('hhi')} 
                     >Добавить</button>
             </div>
         );

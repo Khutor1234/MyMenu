@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 
 import MenuList from '../menu-list';
 import MyRecipes from '../my-recipes';
+import AddNewRecipe from '../add-new-recipe';
 
 import './app.sass';
 
 export default class App extends Component {
+
+	maxId = 100;
 
     state = {
 		menuData : [
@@ -15,10 +18,42 @@ export default class App extends Component {
 		  ]
     }
 
+
+	addItem = (text) => {
+		console.log(text);
+	}
+
+	AddNewRec = (text) => {
+		console.log(text);
+		const newItem = {
+			label: 'Рис', 
+			recepie:'Стушить рис',
+			ingridients: {Рис: 100, Морковь:30, Филе:200},
+			category:['Завтрак'], 
+			id: this.maxId++
+		};
+
+		console.log(this.maxId);
+
+		this.setState(({menuData}) => {
+			const newArr = [
+				...menuData,
+				newItem
+			];
+			return{
+				menuData: newArr
+			}
+		});
+	};
+
 	render() {
 		return (
 			<div className = 'menu-app'>
-				<MenuList  menu={this.state.menuData} />
+				<MenuList  
+					menu={this.state.menuData}
+					onAdd = {this.addItem} />
+				<AddNewRecipe
+					onAddNewRecipe = {this.AddNewRec} />
 				<MyRecipes/>
 			</div>
 		);

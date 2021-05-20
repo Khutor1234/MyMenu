@@ -9,7 +9,7 @@ import './menu-list-item.sass';
 export default class MenuListItem extends Component {
 
 	render() {
-		const { label,recepie, ingridients, category } = this.props;
+		const { label,recepie, ingridients, category, onAdd } = this.props;
 	
 		return (
 			<div className = 'menu-list-item'>
@@ -23,7 +23,9 @@ export default class MenuListItem extends Component {
 					<MenuIngridients ingrid = {ingridients} />
 				</div>
 
-				<MenuForm category = {category}/>
+				<MenuForm 
+					category = {category}
+					onAdd = {onAdd} />
 
 			</div>
 			
