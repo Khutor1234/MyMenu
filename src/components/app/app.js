@@ -15,7 +15,14 @@ export default class App extends Component {
 			this.createTodoItem('Омлет', 'Пожарить яйца', {Яйца: 10, Помидор:300, Лук:200}, ['Завтрак', 'Ужин']),
 			this.createTodoItem('Суп', 'В воду кинуть овощи', {Картофель: 100, Лук:3, Морковь:2},['Обед', 'Ужин']),
 			this.createTodoItem('Рис', 'Стушить рис', {Рис: 100, Морковь:30, Филе:200},['Завтрак'])
-		  ]
+		  ],
+		myMenuData: [],
+		ingridData: {
+			'огурец': 200,
+			'морковь': 300, 
+			'филе курицы': 500,
+			'яблоко': 20,
+		}
     }
 
 	createTodoItem(label, recipe, ingridients, category){
@@ -30,12 +37,12 @@ export default class App extends Component {
 
 
 	addItem = (text) => {
-		console.log(text);
+		console.log(text, 'dsfdsf');
 	}
 
-	AddNewRec = (text, recipe) => {
+	AddNewRec = (text, recipe, ingridientName, ingridientWeight) => {
 
-		const newItem = this.createTodoItem(text, recipe, {Яйца: 10, Помидор:300, Лук:200}, ['Завтрак', 'Ужин']);
+		const newItem = this.createTodoItem(text, recipe, {ingridientName: ingridientWeight}, ['Завтрак', 'Ужин']);
 
 		this.setState(({menuData}) => {
 			const newArr = [
