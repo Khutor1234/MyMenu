@@ -12,6 +12,9 @@ export default class AddNewRecipe extends Component{
         ingridientWeight: ''
     }
 
+    AddIngrid = () => {
+        console.log('hello')
+    }
 
     onLabelChange = (e) => {
         this.setState({
@@ -80,9 +83,24 @@ export default class AddNewRecipe extends Component{
                             value = {this.state.ingridientWeight} ></input> 
                         <div className = 'add-new-recipe_gram'>грамм</div>
                     </div>
-                    <div className = 'add-new-recipe_cross'>
+                    <div className = 'add-new-recipe_cross'
+                        onClick = {this.AddIngrid}>
                             <span></span>
                             <span></span>
+                    </div>
+                    <div className = 'add-new-recipe_check'>
+                        <div className="form-check form-check-inline">
+                            <input className="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio1" value="option1"></input>
+                            <label className="form-check-label" htmlFor="inlineRadio1">Завтрак</label>
+                        </div>
+                        <div className="form-check form-check-inline">
+                            <input className="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2" value="option2"></input>
+                            <label className="form-check-label" htmlFor="inlineRadio2">Обед</label>
+                        </div>
+                        <div className="form-check form-check-inline">
+                            <input className="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio3" value="option3"></input>
+                            <label className="form-check-label" htmlFor="inlineRadio3">Ужин</label>
+                        </div>
                     </div>
                     <button className = 'btn btn-outline-secondary'>Добавить рецепт</button>
                 </form>
