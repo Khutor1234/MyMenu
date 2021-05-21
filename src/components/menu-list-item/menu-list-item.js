@@ -9,7 +9,7 @@ import './menu-list-item.sass';
 export default class MenuListItem extends Component {
 
 	render() {
-		const { label,recepie, ingridients, category, onAdd } = this.props;
+		const { label,recipe, ingridients, category, onAdd } = this.props;
 	
 		return (
 			<div className = 'menu-list-item'>
@@ -17,7 +17,7 @@ export default class MenuListItem extends Component {
 					<div className = 'img'>img</div>
 					<div className = "card-body">
 						<h5 className = "card-title">{label}</h5>
-						<p className = "card-text">{recepie}</p>
+						<p className = "card-text">{recipe}</p>
 					</div>
 
 					<MenuIngridients ingrid = {ingridients} />

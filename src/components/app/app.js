@@ -18,10 +18,10 @@ export default class App extends Component {
 		  ]
     }
 
-	createTodoItem(label, recepie, ingridients, category){
+	createTodoItem(label, recipe, ingridients, category){
 		return {
 			label, 
-			recepie, 
+			recipe, 
 			ingridients, 
 			category,
 			id: this.maxId++
@@ -33,11 +33,9 @@ export default class App extends Component {
 		console.log(text);
 	}
 
-	AddNewRec = (text) => {
-		console.log(text);
-		const newItem = this.createTodoItem(text, 'Пожарить яйца', {Яйца: 10, Помидор:300, Лук:200}, ['Завтрак', 'Ужин']);
+	AddNewRec = (text, recipe) => {
 
-		console.log(this.maxId);
+		const newItem = this.createTodoItem(text, recipe, {Яйца: 10, Помидор:300, Лук:200}, ['Завтрак', 'Ужин']);
 
 		this.setState(({menuData}) => {
 			const newArr = [
