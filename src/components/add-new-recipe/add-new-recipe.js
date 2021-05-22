@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
+
  
 import './add-new-recipe.sass';
 
@@ -12,9 +13,8 @@ export default class AddNewRecipe extends Component{
         ingridientWeight: ''
     }
 
-    AddIngrid = () => {
-        console.log('hello')
-    }
+
+    
 
     onLabelChange = (e) => {
         this.setState({
@@ -42,6 +42,12 @@ export default class AddNewRecipe extends Component{
         })
     }
 
+    AddIngrid = () => {
+        this.setState(({ count }) => ({
+            count: count + 1,
+        }));
+    }
+
     onSubmit = (e) =>{
         e.preventDefault();
         this.props.onAddNewRecipe(this.state.label, this.state.recipe, this.state.ingridientName, this.state.ingridientWeight);
@@ -54,6 +60,7 @@ export default class AddNewRecipe extends Component{
     };
 
     render() {
+        const {count} = this.state;
         return(
             <div className = 'add-new-recipe'>
                 <h1>Добавить новый рецепт</h1>
@@ -83,10 +90,8 @@ export default class AddNewRecipe extends Component{
                             value = {this.state.ingridientWeight} ></input> 
                         <div className = 'add-new-recipe_gram'>грамм</div>
                     </div>
-                    <div className = 'add-new-recipe_cross'
-                        onClick = {this.AddIngrid}>
-                            <span></span>
-                            <span></span>
+                    <div className = 'add-new-recipe_button'>
+                        <button onClick={this.AddIngrid}>Добавить компонент</button>
                     </div>
                     <div className = 'add-new-recipe_check'>
                         <div className="form-check form-check-inline">
