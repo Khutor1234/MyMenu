@@ -10,7 +10,7 @@ export default class MenuForm extends Component {
 
         let element = [];
         let id = 1;
-        const {category} = this.props;
+        const {category, onAdd} = this.props;
 
         for (let key in category) {
             if(category[key]){
@@ -44,7 +44,7 @@ export default class MenuForm extends Component {
                 <input type="text" className = "form-control"  placeholder='Порции'/>
                 <button className = "btn btn-outline-secondary" 
                     type="button"
-                    onClick = {() => this.props.onAdd('hhi')} 
+                    onClick = {() => onAdd('hhi')} 
                     >Добавить</button>
             </div>
         );

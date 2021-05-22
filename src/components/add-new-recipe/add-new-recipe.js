@@ -1,20 +1,24 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 
+import AddName from './add-name';
+import AddText from './add-text';
+import AddIngrid from './add-ingrid';
+import AddCheck from './add-check';
  
 import './add-new-recipe.sass';
 
 export default class AddNewRecipe extends Component{
 
+    id = 1;
+
     state = {
         label: '',
         recipe: '',
         ingridientName: '',
-        ingridientWeight: ''
+        ingridientWeight: '',
+        count: 1
     }
-
-
-    
 
     onLabelChange = (e) => {
         this.setState({
@@ -61,52 +65,37 @@ export default class AddNewRecipe extends Component{
 
     render() {
         const {count} = this.state;
+
+        let elem;
+
+        for(let i=0 ; i <= count; i++){
+            elem = <AddIngrid />
+            console.log(count)
+        }
+
         return(
             <div className = 'add-new-recipe'>
                 <h1>Добавить новый рецепт</h1>
-                <form
-                    onSubmit = {this.onSubmit} >
-                    <input type = 'text' 
-                        className = 'form-control' 
-                        placeholder = 'Название'
-                        onChange = {this.onLabelChange}
-                        value = {this.state.label} ></input>
-                    <input type = 'text' 
-                        className = 'form-control' 
-                        placeholder = 'Рецепт'
-                        onChange = {this.onRecipeChange}
-                        value = {this.state.recipe} ></input>
+                <form onSubmit = {this.onSubmit}>
+                    <AddName 
+                        onLabelChange = {this.onLabelChange} 
+                        value = {this.state.label}/>
+                    <AddText 
+                        onRecipeChange = {this.onRecipeChange} 
+                        value = {this.state.recipe}/>
                     <div>Введите ингридиенты:</div>
-                    <div className = 'add-new-recipe_ingrid'>
-                        <input type = 'text' 
-                            className = 'form-control' 
-                            placeholder = 'Название ингридиента'
-                            onChange = {this.onIngridChange}
-                            value = {this.state.ingridientName} ></input>
-                        <input type = 'text' 
-                            className = 'form-control' 
-                            placeholder = 'Кол-во'
-                            onChange = {this.onWeightChange}
-                            value = {this.state.ingridientWeight} ></input> 
-                        <div className = 'add-new-recipe_gram'>грамм</div>
+                    <AddIngrid 
+                        onIngridChange = {this.onIngridChange}
+                        onWeightChange = {this.onWeightChange}
+                        valueIngrid = {this.state.ingridientName}
+                        valueWeight = {this.state.ingridientWeight} />
+                    {elem}
+                    <div className = 'add-new-recipe_cross'
+                        onClick = {this.AddIngrid}>
+                            <span></span>
+                            <span></span>
                     </div>
-                    <div className = 'add-new-recipe_button'>
-                        <button onClick={this.AddIngrid}>Добавить компонент</button>
-                    </div>
-                    <div className = 'add-new-recipe_check'>
-                        <div className="form-check form-check-inline">
-                            <input className="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio1" value="option1"></input>
-                            <label className="form-check-label" htmlFor="inlineRadio1">Завтрак</label>
-                        </div>
-                        <div className="form-check form-check-inline">
-                            <input className="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2" value="option2"></input>
-                            <label className="form-check-label" htmlFor="inlineRadio2">Обед</label>
-                        </div>
-                        <div className="form-check form-check-inline">
-                            <input className="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio3" value="option3"></input>
-                            <label className="form-check-label" htmlFor="inlineRadio3">Ужин</label>
-                        </div>
-                    </div>
+                    <AddCheck />
                     <button className = 'btn btn-outline-secondary'>Добавить рецепт</button>
                 </form>
             </div> 

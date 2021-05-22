@@ -1,16 +1,16 @@
 import React from 'react';
 
 // eslint-disable-next-line react/prop-types
-const AddName = ({onLabelChange, value}) => {
-
+const AddText = ({onRecipeChange, value}) =>{
     return(
         <input type = 'text' 
             className = 'form-control' 
-            placeholder = 'Название'
-            onChange = {onLabelChange}
+            placeholder = 'Рецепт'
+            onChange = {onRecipeChange}
             value = {value} >
         </input>
     )
-}
+};
 
-export default AddName;
+export default AddText;
+
