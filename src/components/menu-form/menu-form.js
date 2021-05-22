@@ -8,13 +8,27 @@ export default class MenuForm extends Component {
     
     render() {
 
+        let elements;
+        let id = 1;
         const {category} = this.props;
-        const elements = category.map((item) => {
 
-            return (
-                <option value={item}>{item}</option>
-            );
-        });
+        if(category){
+            elements = category.map((item) => {
+                const {breakfast, lunch, dinner} = item;
+                console.log('breakfast',breakfast);
+                console.log('item: ', item);
+
+                // for(let key in item){
+                //     console.log(item[key])
+                //     if(item[key]){
+                //         return (
+                //             <option >{item}</option>
+                //         ); 
+                //     }
+                // }        
+            });
+        }
+        
 
 
         return(

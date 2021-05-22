@@ -8,14 +8,30 @@ import './app.sass';
 
 export default class App extends Component {
 
-	maxId = 1;
+	idMenu = 1;
+	idIngrid = 1000000;
 
     state = {
 		menuData : [
-			this.createTodoItem('Омлет', 'Пожарить яйца', {Яйца: 10, Помидор:300, Лук:200}, ['Завтрак', 'Ужин']),
-			this.createTodoItem('Суп', 'В воду кинуть овощи', {Картофель: 100, Лук:3, Морковь:2},['Обед', 'Ужин']),
-			this.createTodoItem('Рис', 'Стушить рис', {Рис: 100, Морковь:30, Филе:200},['Завтрак'])
-		  ],
+			this.createMenuItem('Омлет', 'Пожарить яйца', 
+				[this.createMenuIngrid('Помидор', 300),
+				this.createMenuIngrid('Яйца', 10),
+				this.createMenuIngrid('Сыр',250)], 
+				[{breakfast: false, lunch: true, dinner: true}]
+				),
+			this.createMenuItem('Рис', 'Стушить рис', 
+				[this.createMenuIngrid('Рис', 200),
+				this.createMenuIngrid('Мясо', 100),
+				this.createMenuIngrid('Сыр',50)], 
+				[{breakfast: true, lunch: true, dinner: true}]
+				),
+			this.createMenuItem('Суп', 'Сварить овощи', 
+				[this.createMenuIngrid('Картофель', 100),
+				this.createMenuIngrid('Перец', 100),
+				this.createMenuIngrid('Морковь',50)], 
+				[{breakfast: true, lunch: false, dinner: true}]
+				),
+		],
 		myMenuData: [],
 		ingridData: {
 			'огурец': 200,
@@ -25,24 +41,33 @@ export default class App extends Component {
 		}
     }
 
-	createTodoItem(label, recipe, ingridients, category){
+	createMenuItem(label, recipe, ingridients, category){
 		return {
 			label, 
 			recipe, 
 			ingridients, 
 			category,
-			id: this.maxId++
+			id: this.idMenu++
 		}	
 	}
+
+	createMenuIngrid(name, weight){
+		return{
+			name,
+			weight,
+			id: this.idIngrid++
+		}
+	}
+
 
 
 	addItem = (text) => {
 		console.log(text, 'dsfdsf');
 	}
 
-	AddNewRec = (text, recipe, ingridientName, ingridientWeight) => {
+	AddNewRec = (text, recipe) => {
 
-		const newItem = this.createTodoItem(text, recipe, {ingridientName: ingridientWeight}, ['Завтрак', 'Ужин']);
+		const newItem = this.createMenuItem(text, recipe);
 
 		this.setState(({menuData}) => {
 			const newArr = [
@@ -61,8 +86,8 @@ export default class App extends Component {
 				<MenuList  
 					menu={this.state.menuData}
 					onAdd = {this.addItem} />
-				<AddNewRecipe
-					onAddNewRecipe = {this.AddNewRec} />
+				{/* <AddNewRecipe
+					onAddNewRecipe = {this.AddNewRec} /> */}
 				<MyRecipes/>
 			</div>
 		);
