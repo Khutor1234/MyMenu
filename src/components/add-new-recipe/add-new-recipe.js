@@ -10,14 +10,17 @@ import './add-new-recipe.sass';
 
 export default class AddNewRecipe extends Component{
 
-    id = 1;
+    id = 0;
 
     state = {
         label: '',
         recipe: '',
         ingridientName: '',
         ingridientWeight: '',
-        count: 1
+        count: 0,
+        breakfast: false, 
+        lunch: false, 
+        dinner: false,
     }
 
     onLabelChange = (e) => {
@@ -46,6 +49,22 @@ export default class AddNewRecipe extends Component{
         })
     }
 
+    onCheck = (e) =>{
+        console.log(e.target.value);
+        const {name, value, type, checked} = e.target;
+        console.log('name',name, 'value', value, 'type', type, 'chec', checked);
+
+        console.log(name, checked)
+        type === "checkbox" ? 
+            this.setState({
+                [name]: checked
+            })
+        :
+        this.setState({
+            [name]: value
+        }) 
+    }
+
     AddIngrid = () => {
         this.setState(({ count }) => ({
             count: count + 1,
@@ -54,7 +73,7 @@ export default class AddNewRecipe extends Component{
 
     onSubmit = (e) =>{
         e.preventDefault();
-        this.props.onAddNewRecipe(this.state.label, this.state.recipe, this.state.ingridientName, this.state.ingridientWeight);
+        this.props.onAddNewRecipe(this.state.label, this.state.recipe, this.state.ingridientName, this.state.ingridientWeight, this.state.breakfast, this.state.lunch, this.state.dinner);
         this.setState({
             label: '',
             recipe: '',
@@ -66,12 +85,6 @@ export default class AddNewRecipe extends Component{
     render() {
         const {count} = this.state;
 
-        let elem;
-
-        for(let i=0 ; i <= count; i++){
-            elem = <AddIngrid />
-            console.log(count)
-        }
 
         return(
             <div className = 'add-new-recipe'>
@@ -89,13 +102,16 @@ export default class AddNewRecipe extends Component{
                         onWeightChange = {this.onWeightChange}
                         valueIngrid = {this.state.ingridientName}
                         valueWeight = {this.state.ingridientWeight} />
-                    {elem}
                     <div className = 'add-new-recipe_cross'
                         onClick = {this.AddIngrid}>
                             <span></span>
                             <span></span>
                     </div>
-                    <AddCheck />
+                    <AddCheck 
+                        onCheck = {this.onCheck} 
+                        checkedBreakfast = {this.state.breakfast}
+                        checkedDinner = {this.state.dinner}
+                        checkedLunch = {this.state.lunch} />
                     <button className = 'btn btn-outline-secondary'>Добавить рецепт</button>
                 </form>
             </div> 
