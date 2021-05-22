@@ -17,19 +17,19 @@ export default class App extends Component {
 				[this.createMenuIngrid('Помидор', 300),
 				this.createMenuIngrid('Яйца', 10),
 				this.createMenuIngrid('Сыр',250)], 
-				[{breakfast: false, lunch: true, dinner: true}]
+				{breakfast: false, lunch: true, dinner: true}
 				),
 			this.createMenuItem('Рис', 'Стушить рис', 
 				[this.createMenuIngrid('Рис', 200),
 				this.createMenuIngrid('Мясо', 100),
 				this.createMenuIngrid('Сыр',50)], 
-				[{breakfast: true, lunch: true, dinner: true}]
+				{breakfast: true, lunch: true, dinner: true}
 				),
 			this.createMenuItem('Суп', 'Сварить овощи', 
 				[this.createMenuIngrid('Картофель', 100),
 				this.createMenuIngrid('Перец', 100),
 				this.createMenuIngrid('Морковь',50)], 
-				[{breakfast: true, lunch: false, dinner: true}]
+				{breakfast: true, lunch: false, dinner: true}
 				),
 		],
 		myMenuData: [],
@@ -86,8 +86,8 @@ export default class App extends Component {
 				<MenuList  
 					menu={this.state.menuData}
 					onAdd = {this.addItem} />
-				{/* <AddNewRecipe
-					onAddNewRecipe = {this.AddNewRec} /> */}
+				<AddNewRecipe
+					onAddNewRecipe = {this.AddNewRec} />
 				<MyRecipes/>
 			</div>
 		);

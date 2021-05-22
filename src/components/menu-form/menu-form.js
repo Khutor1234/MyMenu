@@ -8,35 +8,39 @@ export default class MenuForm extends Component {
     
     render() {
 
-        let elements;
+        let element = [];
         let id = 1;
         const {category} = this.props;
 
-        if(category){
-            elements = category.map((item) => {
-                const {breakfast, lunch, dinner} = item;
-                console.log('breakfast',breakfast);
-                console.log('item: ', item);
+        for (let key in category) {
+            if(category[key]){
+                element.push(key);
+            };
+        };
 
-                // for(let key in item){
-                //     console.log(item[key])
-                //     if(item[key]){
-                //         return (
-                //             <option >{item}</option>
-                //         ); 
-                //     }
-                // }        
-            });
-        }
-        
+        const elements = element.map((item) => {
+            if(item == 'breakfast'){
+                item = 'Завтрак';
+            } ;
+            if(item == 'lunch'){
+                item = 'Обед';
+            };
+            if(item == 'dinner'){
+                item = 'Ужин';
+            };
+
+            return (
+                <option key = {id++} value = {item} >{item}</option>
+            );
+        });
 
 
         return(
             <div className = "input-group menu-form">
-                {<select className = "form-select">
+                <select className = "form-select">
                     <option selected>Прием еды</option>
                     {elements}
-                </select>}
+                </select>
                 <input type="text" className = "form-control"  placeholder='Порции'/>
                 <button className = "btn btn-outline-secondary" 
                     type="button"
