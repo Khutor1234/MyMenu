@@ -65,9 +65,9 @@ export default class App extends Component {
 		console.log(text, 'dsfdsf');
 	}
 
-	AddNewRec = (text, recipe, ingridName, ingridientWeight, breakfast, lunch, dinner) => {
+	AddNewRec = (text, recipe, allIngrid, breakfast, lunch, dinner) => {
 
-		const newItem = this.createMenuItem(text, recipe, [this.createMenuIngrid(ingridName, ingridientWeight)], {breakfast, lunch, dinner});
+		const newItem = this.createMenuItem(text, recipe, allIngrid, {breakfast, lunch, dinner});
 
 		this.setState(({menuData}) => {
 			const newArr = [

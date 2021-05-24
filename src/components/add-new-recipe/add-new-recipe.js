@@ -10,13 +10,14 @@ import './add-new-recipe.sass';
 
 export default class AddNewRecipe extends Component{
 
-    id = 0;
+    ingridId = 0;
 
     state = {
         label: '',
         recipe: '',
         ingridientName: '',
         ingridientWeight: '',
+        allIngrid: [],
         count: 0,
         breakfast: false, 
         lunch: false, 
@@ -36,23 +37,19 @@ export default class AddNewRecipe extends Component{
     }
 
     onIngridChange = (e) => {
-        console.log(e.target.value);
         this.setState({
             ingridientName: e.target.value
         })
     }
 
     onWeightChange = (e) => {
-        console.log(e.target.value);
         this.setState({
             ingridientWeight: e.target.value
         })
     }
 
     onCheck = (e) =>{
-        console.log(e.target.value);
         const {name, value, type, checked} = e.target;
-        console.log('name',name, 'value', value, 'type', type, 'chec', checked);
 
         console.log(name, checked)
         type === "checkbox" ? 
@@ -66,25 +63,53 @@ export default class AddNewRecipe extends Component{
     }
 
     AddIngrid = () => {
-        this.setState(({ count }) => ({
-            count: count + 1,
-        }));
+        const newItem = {name: this.state.ingridientName, weight: this.state.ingridientWeight, id: this.ingridId++}
+        console.log(newItem)
+        this.setState({
+            count: this.state.count+1,
+            ingridientName: '',
+            ingridientWeight: '',
+        });
+
+        this.setState(({allIngrid}) => {
+			const newArr = [
+				...allIngrid,
+				newItem
+			];
+			return{
+				allIngrid: newArr
+			}
+		});
+        console.log(this.state.allIngrid)
+    }
+
+    displayIngrid(){
+        let ingrid = [];
+        for(let i = 0; i < this.state.count; i++){
+            ingrid.push(
+            <div key={i}>
+                <AddIngrid onIngridChange = {this.onIngridChange}
+                        onWeightChange = {this.onWeightChange}
+                        valueIngrid = {this.state.ingridientName}
+                        valueWeight = {this.state.ingridientWeight} />
+            </div>
+         )
+        }
+        return ingrid || null;
     }
 
     onSubmit = (e) =>{
         e.preventDefault();
-        this.props.onAddNewRecipe(this.state.label, this.state.recipe, this.state.ingridientName, this.state.ingridientWeight, this.state.breakfast, this.state.lunch, this.state.dinner);
+        this.props.onAddNewRecipe(this.state.label, this.state.recipe, this.state.allIngrid, this.state.breakfast, this.state.lunch, this.state.dinner);
         this.setState({
             label: '',
             recipe: '',
             ingridientName: '',
-            ingridientWeight: ''
+            ingridientWeight: '',
         });
     };
 
     render() {
-        const {count} = this.state;
-
 
         return(
             <div className = 'add-new-recipe'>
@@ -102,6 +127,7 @@ export default class AddNewRecipe extends Component{
                         onWeightChange = {this.onWeightChange}
                         valueIngrid = {this.state.ingridientName}
                         valueWeight = {this.state.ingridientWeight} />
+                    {this.displayIngrid()}
                     <div className = 'add-new-recipe_cross'
                         onClick = {this.AddIngrid}>
                             <span></span>
